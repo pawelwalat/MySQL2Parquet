@@ -38,8 +38,7 @@ try:
 	field_names = [i[0] for i in cur.description]
 	df = pd.DataFrame(list(result), columns=field_names)
 	df.to_parquet(output_file)
+	print("File \""+output_file+"\" saved successfully!")	
 except:
 	print("Error: "+sys.exc_info()[0])
-
-print("File \""+output_file+"\" saved successfully!")	
 	

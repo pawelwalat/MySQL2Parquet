@@ -23,12 +23,12 @@ output_file = sys.argv[1]
 hostname 	= sys.argv[2]
 username 	= sys.argv[3]
 password 	= sys.argv[4]
-hostname 	= sys.argv[5]
+db_name 	= sys.argv[5]
 select 		= sys.argv[6]
 
 
 try:
-	db=dbapi.connect(hostname,username,password,)
+	db=dbapi.connect(hostname,username,password,db_name)
 	cur=db.cursor()
 	cur.execute(select)
 	result=cur.fetchall()	

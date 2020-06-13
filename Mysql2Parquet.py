@@ -7,6 +7,7 @@
 ###
 ### Change Log:
 ###     1.0: 15-May-2019 - Initial version (Pawel Walat)
+###     1.1: 12-Jun-2020 - Adding DB name parameter
 ##########################################################################
 
 import MySQLdb as dbapi
@@ -15,18 +16,19 @@ import csv
 import pandas as pd
 
 
-if len(sys.argv) != 6: 
-    sys.exit('Usage: '+sys.argv[0]+' [output_file] [hostname/ip] [username] [password] "[select statement]"')
+if len(sys.argv) != 7: 
+    sys.exit('Usage: '+sys.argv[0]+' [output_file] [hostname/ip] [username] [password] [db_name] "[select statement]"')
 
 output_file = sys.argv[1]
 hostname 	= sys.argv[2]
 username 	= sys.argv[3]
 password 	= sys.argv[4]
-select 		= sys.argv[5]
+hostname 	= sys.argv[5]
+select 		= sys.argv[6]
 
 
 try:
-	db=dbapi.connect(host=hostname,user=username,passwd=password)
+	db=dbapi.connect(hostname,username,password,)
 	cur=db.cursor()
 	cur.execute(select)
 	result=cur.fetchall()	

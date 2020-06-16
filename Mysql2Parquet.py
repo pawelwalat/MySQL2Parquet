@@ -28,7 +28,7 @@ select 		= sys.argv[6]
 
 
 try:
-	db=dbapi.connect(hostname,username,password,db_name)
+	db=dbapi.connect(host=hostname, user=username, password=password, db=db_name, charset='utf8')
 	cur=db.cursor()
 	cur.execute(select)
 	result=cur.fetchall()	
